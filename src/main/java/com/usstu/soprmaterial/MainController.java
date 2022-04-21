@@ -1,22 +1,19 @@
 package com.usstu.soprmaterial;
 
 import com.usstu.soprmaterial.connectionDb.LoginModel;
+import com.usstu.soprmaterial.model.Material;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.sql.*;
-import java.time.LocalDateTime;
-import java.util.EventListener;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class MainController implements Initializable {
 
@@ -56,7 +53,7 @@ public class MainController implements Initializable {
     private ImageView img4;
 
     @FXML
-    private MenuButton material_select;
+    private ComboBox<Material> material_select;
 
     @FXML
     private TextField number_obrazca;
@@ -85,8 +82,17 @@ public class MainController implements Initializable {
 
     }
 
+
     @Override
     public void initialize(URL var1, ResourceBundle var2){
+        ObservableList<Material> materials = loginModel.getAllMaterial();
+        List<String> list = new LinkedList<>();
+        for (Material material: materials){
+            list.add(material.getName());
+        }
+        ObservableList dataList = FXCollections.observableArrayList(list);
+
+        material_select.setItems(dataList);
 
         if (loginModel.isDbConnected()){
             bdInfo.setText("База данных подключена");

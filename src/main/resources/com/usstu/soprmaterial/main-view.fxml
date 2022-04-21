@@ -14,6 +14,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.scene.control.ComboBox?>
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="100.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.usstu.soprmaterial.MainController">
     <tabs>
         <Tab text="Форма ">
@@ -72,7 +73,7 @@
                         <Label alignment="CENTER_RIGHT" layoutX="17.0" layoutY="191.0" prefHeight="39.0" prefWidth="150.0" text="           Добавка :" />
                         <TextField fx:id="procent" layoutX="187.0" layoutY="258.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="212.0" />
                         <Label alignment="CENTER_RIGHT" layoutX="17.0" layoutY="254.0" prefHeight="39.0" prefWidth="150.0" text="Процент содержания :" />
-                        <MenuButton fx:id="material_select" layoutX="184.0" layoutY="73.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="219.0" text="Выберите материал" />
+                        <ComboBox fx:id="material_select" layoutX="184.0" layoutY="73.0" prefHeight="26.0" prefWidth="219.0"/>
                         <MenuButton fx:id="dobavca_select" layoutX="184.0" layoutY="196.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="219.0" text="Выберите добавку " />
                         <Button fx:id="save_form" layoutX="725.0" layoutY="491.0" mnemonicParsing="false" onMouseClicked="#clickBtnSaveForm" prefHeight="42.0" prefWidth="121.0" text="Сохранить" />
                         <Button fx:id="add_material_button" layoutX="434.0" layoutY="71.0" minWidth="24.0" mnemonicParsing="false" onMouseClicked="#clickBtnAddMaterial" prefHeight="30.0" prefWidth="59.0" text="+">
