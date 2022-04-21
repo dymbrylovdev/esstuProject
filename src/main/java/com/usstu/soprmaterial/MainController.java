@@ -53,7 +53,7 @@ public class MainController implements Initializable {
     private ImageView img4;
 
     @FXML
-    private ComboBox<Material> material_select;
+    private ComboBox<String> material_select;
 
     @FXML
     private TextField number_obrazca;
@@ -90,7 +90,7 @@ public class MainController implements Initializable {
         for (Material material: materials){
             list.add(material.getName());
         }
-        ObservableList dataList = FXCollections.observableArrayList(list);
+        ObservableList<String> dataList = FXCollections.observableArrayList(list);
 
         material_select.setItems(dataList);
 
