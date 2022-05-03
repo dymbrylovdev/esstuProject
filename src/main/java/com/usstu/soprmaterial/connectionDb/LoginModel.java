@@ -3,11 +3,9 @@ package com.usstu.soprmaterial.connectionDb;
 import com.usstu.soprmaterial.model.Material;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import java.sql.*;
+import java.util.Map;
 
 public class LoginModel {
     Connection connection;
@@ -26,7 +24,7 @@ public class LoginModel {
         }
     }
 
-    public ObservableList<Material> getAllMaterial() {
+    public ObservableList<Material> getAllMaterial()  {
         ObservableList<Material> materials = FXCollections.observableArrayList();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -40,9 +38,26 @@ public class LoginModel {
                 Material material = new Material(id, name);
                 materials.add(material);
             }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return materials;
+    }
+
+    public Map.Entry<Boolean, String> setMaterial (String text)  {
+        Map.Entry<Boolean, String> result = Map.entry(false, "Ощибка сохранения");
+        String query = "INSERT INTO material(name) VALUES('"+text+"')";
+        try {
+            Statement preparedStatement = connection.createStatement();
+            int status = preparedStatement.executeUpdate(query);
+            if (status == 1) {
+                result = Map.entry(true, "Материал сохранен");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return  result;
     }
 }

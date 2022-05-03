@@ -10,13 +10,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SqliteConnection {
-    private static final String location = MainController.class.getResource("main.db").toExternalForm();
+    private static final String location = MainController.class.getResource("maindb.db").toExternalForm();
     public static Connection Connector() {
         Connection connect;
         String dbPrefix = "jdbc:sqlite:";
         try {
             connect = DriverManager.getConnection(dbPrefix + location);
-                    } catch (SQLException exception) {
+        } catch (SQLException exception) {
             Logger.getAnonymousLogger().log(Level.SEVERE,
                     LocalDateTime.now() + ": Could not connect to SQLite DB at ");
             return null;

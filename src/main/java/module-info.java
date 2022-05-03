@@ -11,7 +11,10 @@ module com.usstu.soprmaterial {
     requires eu.hansolo.tilesfx;
     requires java.sql;
     requires org.xerial.sqlitejdbc;
+    requires java.desktop;
 
     opens com.usstu.soprmaterial to javafx.fxml;
     exports com.usstu.soprmaterial;
+    exports com.usstu.soprmaterial.controllers;
+    opens com.usstu.soprmaterial.controllers to javafx.fxml;
 }

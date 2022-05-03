@@ -1,21 +1,19 @@
 package com.usstu.soprmaterial;
 
+import com.usstu.soprmaterial.controllers.SuperController;
 import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -123,7 +121,6 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage primeStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("main-view.fxml"));
-
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("style/form-style.css").toExternalForm());
         Stage stage = new Stage();
@@ -159,6 +156,7 @@ public class MainApplication extends Application {
         stage.show();
 
     }
+
 
     public static void main(String[] args) {
         checkDrivers();
